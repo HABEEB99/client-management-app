@@ -1,4 +1,7 @@
-import "./globals.css";
+import { ThemeProvider } from "next-themes";
+
+import { Footer, Header, Providers } from "@/components";
+import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,7 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} w-screen min-h-screen`}>
+        <Providers>
+          <Header />
+          <main className="w-full min-h-[85vh]">{children}</main>
+          <Footer />
+        </Providers>
+      </body>
     </html>
   );
 }
